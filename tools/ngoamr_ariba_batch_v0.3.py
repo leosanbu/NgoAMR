@@ -64,8 +64,8 @@ def run_wrapper(input_dirs, output_dir, db_path, threads):
     dirs = input_dirs.split(',')
 
     # Define possible forward and reverse suffix patterns
-    forward_suffixes = ['_1.fastq.gz', '_R1.fastq.gz', '_R1_001.fastq.gz']
-    reverse_suffixes = ['_2.fastq.gz', '_R2.fastq.gz', '_R2_001.fastq.gz']
+    forward_suffixes = ['_1.fastq.gz', '_R1.fastq.gz', '_R1_001.fastq.gz', '_forward_paired.fq.gz']
+    reverse_suffixes = ['_2.fastq.gz', '_R2.fastq.gz', '_R2_001.fastq.gz', '_reverse_paired.fq.gz']
 
     # Loop through each directory
     for d in dirs:
@@ -114,7 +114,7 @@ def run_wrapper(input_dirs, output_dir, db_path, threads):
                     extract_indels(output_folder)
             
             # Run ariba summary
-            execute_ariba_summary(output_dir)
+            execute_ariba_summary(output_dir, args.short_names)
 
     
 ## Main ##
